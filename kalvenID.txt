@@ -1,0 +1,1093 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package employeproject1;
+
+import java.sql.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.regex.*;
+import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
+/**
+ *
+ * @author kaiva
+ */
+public class KalvenID extends javax.swing.JFrame {
+
+    String gender;
+    String Date;
+    ResultSet rsp;
+    Statement st;
+    int lastid;
+    public KalvenID() {
+        initComponents();
+        //when program is run add the value of lastid for that call constrctor
+        getlastid();
+        Search.setEnabled(false);
+        Update.setEnabled(false);
+     }
+    
+    public void getlastid()
+    {
+        try {
+           
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost/employeelogin1","root","");
+        String sql = "select max(sno) from KalvenID";
+        st = con.createStatement();
+        rsp = st.executeQuery(sql);
+        if(rsp.next()){
+        //if result set query is true then get ID from KalvenID 
+           lastid = rsp.getInt(1);
+           //display the value in Jtextfeild ""
+           lastid++;
+           //convert lastID into String
+           sno.setText(Integer.toString(lastid));
+        
+        
+        }
+        }
+        
+         catch(Exception e){
+       JOptionPane.showMessageDialog(null, e);
+
+    }
+        
+        
+    }
+   
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
+    private void initComponents() {
+
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
+        jLabel13 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jPanel1 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        Employee_Name = new javax.swing.JTextField();
+        Register_Email = new javax.swing.JTextField();
+        male = new javax.swing.JRadioButton();
+        female = new javax.swing.JRadioButton();
+        Day_shift = new javax.swing.JCheckBox();
+        Night_shift = new javax.swing.JCheckBox();
+        Employee_post = new javax.swing.JComboBox();
+        saveB = new javax.swing.JButton();
+        resetBtn = new javax.swing.JButton();
+        Salary = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        Record = new javax.swing.JButton();
+        sno = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        NAME = new javax.swing.JLabel();
+        EMAIL = new javax.swing.JLabel();
+        ID = new javax.swing.JLabel();
+        SALARY = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
+        jPanel4 = new javax.swing.JPanel();
+        E_password = new javax.swing.JPasswordField();
+        jSeparator3 = new javax.swing.JSeparator();
+        E_userName = new javax.swing.JTextField();
+        GetAccess = new javax.swing.JButton();
+        Search = new javax.swing.JButton();
+        Update = new javax.swing.JButton();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jSeparator6 = new javax.swing.JSeparator();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+
+        jLabel13.setIcon(new javax.swing.ImageIcon("C:\\Users\\kaiva\\Desktop\\Employee project\\reset.jpg")); // NOI18N
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("EmployeeRegister");
+        setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jScrollPane1.setEnabled(false);
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jButton1.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jButton1.setText("X");
+        jButton1.setBorder(null);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
+
+        jLabel7.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
+        jLabel7.setText("Register Email");
+
+        jLabel8.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
+        jLabel8.setText("Gender");
+
+        jLabel9.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
+        jLabel9.setText("Working Shift");
+
+        jLabel10.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
+        jLabel10.setText("Employee Categories");
+
+        Employee_Name.setFont(new java.awt.Font("Cambria Math", 1, 18)); // NOI18N
+        Employee_Name.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Employee_NameActionPerformed(evt);
+            }
+        });
+        Employee_Name.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                Employee_NameKeyReleased(evt);
+            }
+        });
+
+        Register_Email.setFont(new java.awt.Font("Cambria Math", 0, 18)); // NOI18N
+        Register_Email.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Register_EmailActionPerformed(evt);
+            }
+        });
+        Register_Email.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                Register_EmailKeyReleased(evt);
+            }
+        });
+
+        buttonGroup1.add(male);
+        male.setFont(new java.awt.Font("Cambria Math", 0, 18)); // NOI18N
+        male.setText("Male");
+        male.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        male.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                maleActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(female);
+        female.setFont(new java.awt.Font("Cambria Math", 0, 18)); // NOI18N
+        female.setText("Female");
+        female.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                femaleActionPerformed(evt);
+            }
+        });
+
+        buttonGroup2.add(Day_shift);
+        Day_shift.setFont(new java.awt.Font("Cambria Math", 0, 18)); // NOI18N
+        Day_shift.setText("Day Shift");
+        Day_shift.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Day_shiftActionPerformed(evt);
+            }
+        });
+
+        buttonGroup2.add(Night_shift);
+        Night_shift.setFont(new java.awt.Font("Cambria Math", 0, 18)); // NOI18N
+        Night_shift.setText("Night Shift");
+        Night_shift.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Night_shiftActionPerformed(evt);
+            }
+        });
+
+        Employee_post.setFont(new java.awt.Font("Cambria Math", 0, 18)); // NOI18N
+        Employee_post.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select ", "Project Head", "Manager", "Technician", "genral Staff", "clerk", " " }));
+        Employee_post.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Employee_postActionPerformed(evt);
+            }
+        });
+
+        saveB.setBackground(new java.awt.Color(51, 204, 255));
+        saveB.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        saveB.setForeground(new java.awt.Color(0, 51, 51));
+        saveB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/employeproject1/save1.png"))); // NOI18N
+        saveB.setBorder(null);
+        saveB.setContentAreaFilled(false);
+        saveB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveBActionPerformed(evt);
+            }
+        });
+
+        resetBtn.setBackground(new java.awt.Color(51, 204, 255));
+        resetBtn.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        resetBtn.setForeground(new java.awt.Color(0, 51, 102));
+        resetBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\kaiva\\Desktop\\Employee project\\Reset1.png")); // NOI18N
+        resetBtn.setContentAreaFilled(false);
+        resetBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resetBtnActionPerformed(evt);
+            }
+        });
+
+        Salary.setFont(new java.awt.Font("Cambria Math", 0, 18)); // NOI18N
+        Salary.setForeground(new java.awt.Color(255, 0, 0));
+        Salary.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SalaryActionPerformed(evt);
+            }
+        });
+        Salary.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                SalaryKeyReleased(evt);
+            }
+        });
+
+        jLabel12.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
+        jLabel12.setText("Name");
+
+        jLabel15.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
+        jLabel15.setText("salary");
+
+        Record.setBackground(new java.awt.Color(51, 204, 255));
+        Record.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        Record.setForeground(new java.awt.Color(0, 51, 51));
+        Record.setIcon(new javax.swing.ImageIcon(getClass().getResource("/employeproject1/Srecord1.png"))); // NOI18N
+        Record.setContentAreaFilled(false);
+        Record.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RecordActionPerformed(evt);
+            }
+        });
+
+        sno.setBackground(new java.awt.Color(204, 255, 255));
+        sno.setFont(new java.awt.Font("Cambria Math", 1, 18)); // NOI18N
+        sno.setForeground(new java.awt.Color(0, 51, 153));
+        sno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                snoActionPerformed(evt);
+            }
+        });
+        sno.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                snoKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                snoKeyReleased(evt);
+            }
+        });
+
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\kaiva\\Desktop\\Employee project\\Rup.jpg")); // NOI18N
+
+        jLabel4.setFont(new java.awt.Font("Cambria Math", 0, 36)); // NOI18N
+        jLabel4.setText("Employee Record");
+
+        jLabel17.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
+        jLabel17.setText("Employee ID");
+
+        NAME.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        NAME.setForeground(new java.awt.Color(255, 0, 51));
+
+        EMAIL.setFont(new java.awt.Font("Cambria Math", 0, 14)); // NOI18N
+        EMAIL.setForeground(new java.awt.Color(255, 0, 0));
+        EMAIL.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                EMAILKeyReleased(evt);
+            }
+        });
+
+        ID.setForeground(new java.awt.Color(255, 0, 51));
+
+        SALARY.setForeground(new java.awt.Color(204, 0, 0));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(saveB)
+                        .addGap(14, 14, 14)
+                        .addComponent(resetBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Record, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(158, 158, 158)
+                            .addComponent(jLabel4)
+                            .addGap(134, 134, 134)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(30, 30, 30)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel12)
+                                        .addComponent(jLabel8)
+                                        .addComponent(jLabel7)
+                                        .addComponent(jLabel17)
+                                        .addComponent(jLabel9))
+                                    .addGap(112, 112, 112)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(sno, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
+                                        .addComponent(Employee_Name, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
+                                        .addComponent(Register_Email, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
+                                        .addComponent(NAME, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(Day_shift)
+                                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                                    .addGap(10, 10, 10)
+                                                    .addComponent(male)))
+                                            .addGap(30, 30, 30)
+                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(female)
+                                                .addComponent(Night_shift))
+                                            .addGap(23, 23, 23))
+                                        .addComponent(EMAIL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(ID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addComponent(jLabel10)
+                                            .addGap(39, 39, 39))
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addComponent(jLabel15)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(Employee_post, 0, 270, Short.MAX_VALUE)
+                                        .addComponent(Salary)
+                                        .addComponent(SALARY, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 534, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jLabel11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                        .addGap(378, 378, 378))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addComponent(jLabel4)
+                        .addGap(39, 39, 39)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(sno, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel17))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ID, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel12)
+                            .addComponent(Employee_Name, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(NAME, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel7)
+                            .addComponent(Register_Email, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(EMAIL, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(male)
+                            .addComponent(female))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(Day_shift)
+                    .addComponent(Night_shift))
+                .addGap(37, 37, 37)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Employee_post, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addComponent(jLabel15))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(43, 43, 43)
+                            .addComponent(Salary, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(SALARY, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(Record)
+                        .addComponent(resetBtn))
+                    .addComponent(saveB, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(801, 801, 801))
+        );
+
+        jScrollPane1.setViewportView(jPanel1);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 0, 630, 760));
+
+        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/employeproject1/grow.jpeg"))); // NOI18N
+        jLabel1.setText("jLabel1");
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/employeproject1/statement2.jpeg"))); // NOI18N
+        jLabel3.setText("jLabel3");
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/employeproject1/Salary icon.jpeg"))); // NOI18N
+        jLabel5.setText("jLabel5");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(113, Short.MAX_VALUE)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(102, 102, 102))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(56, 56, 56)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(233, 233, 233))
+        );
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 760));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 620, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 90, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 0, 620, 90));
+        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 250, 200, 0));
+        getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 240, -1, -1));
+
+        jPanel4.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel4.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+
+        E_password.setBackground(new java.awt.Color(0, 0, 0));
+        E_password.setForeground(new java.awt.Color(255, 255, 255));
+        E_password.setBorder(null);
+        E_password.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                E_passwordActionPerformed(evt);
+            }
+        });
+
+        jSeparator3.setForeground(new java.awt.Color(255, 255, 255));
+        jSeparator3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 3, true));
+        jSeparator3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+
+        E_userName.setBackground(new java.awt.Color(0, 0, 0));
+        E_userName.setFont(new java.awt.Font("Cambria Math", 0, 18)); // NOI18N
+        E_userName.setForeground(new java.awt.Color(255, 255, 255));
+        E_userName.setBorder(null);
+        E_userName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                E_userNameActionPerformed(evt);
+            }
+        });
+
+        GetAccess.setBackground(new java.awt.Color(0, 102, 255));
+        GetAccess.setFont(new java.awt.Font("Cambria Math", 0, 24)); // NOI18N
+        GetAccess.setForeground(new java.awt.Color(255, 255, 255));
+        GetAccess.setText("Get Access");
+        GetAccess.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GetAccessActionPerformed(evt);
+            }
+        });
+
+        Search.setBackground(new java.awt.Color(0, 0, 0));
+        Search.setFont(new java.awt.Font("Cambria Math", 0, 24)); // NOI18N
+        Search.setForeground(new java.awt.Color(255, 255, 255));
+        Search.setText("Search");
+        Search.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SearchActionPerformed(evt);
+            }
+        });
+
+        Update.setBackground(new java.awt.Color(0, 0, 0));
+        Update.setFont(new java.awt.Font("Cambria Math", 0, 24)); // NOI18N
+        Update.setForeground(new java.awt.Color(255, 255, 255));
+        Update.setText("Update");
+        Update.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpdateActionPerformed(evt);
+            }
+        });
+
+        jLabel16.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel16.setText("Admin Name");
+
+        jLabel18.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel18.setText("Password");
+
+        jSeparator6.setForeground(new java.awt.Color(255, 255, 255));
+        jSeparator6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 3, true));
+        jSeparator6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/employeproject1/acess Symbol.PNG"))); // NOI18N
+        jLabel14.setText("jLabel14");
+
+        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/employeproject1/assceekk.PNG"))); // NOI18N
+        jLabel20.setText("jLabel20");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(GetAccess, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(Search, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(Update, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(104, 104, 104))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(E_userName, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(13, 13, 13)
+                                .addComponent(jLabel18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(E_password, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(61, 61, 61))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(322, 322, 322))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(66, 66, 66))))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel14)
+                    .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(E_userName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel16))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 5, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel18)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(E_password, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 5, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                .addComponent(GetAccess, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(68, 68, 68)
+                .addComponent(Search, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(67, 67, 67)
+                .addComponent(Update, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(82, 82, 82))
+        );
+
+        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 0, 440, 760));
+
+        setSize(new java.awt.Dimension(1356, 1126));
+        setLocationRelativeTo(null);
+    }// </editor-fold>                        
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        dispose();
+    }                                        
+
+    private void Day_shiftActionPerformed(java.awt.event.ActionEvent evt) {                                          
+        // TODO add your handling code here:
+    }                                         
+
+    private void Night_shiftActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        // TODO add your handling code here:
+    }                                           
+
+    private void Employee_NameActionPerformed(java.awt.event.ActionEvent evt) {                                              
+        // TODO add your handling code here:
+    }                                             
+
+    private void maleActionPerformed(java.awt.event.ActionEvent evt) {                                     
+        // TODO add your handling code here:
+    }                                    
+
+    private void femaleActionPerformed(java.awt.event.ActionEvent evt) {                                       
+        // TODO add your handling code here:
+    }                                      
+
+    private void Employee_postActionPerformed(java.awt.event.ActionEvent evt) {                                              
+        // TODO add your handling code here:
+    }                                             
+
+    private void Register_EmailActionPerformed(java.awt.event.ActionEvent evt) {                                               
+        // TODO add your handling code here:
+    }                                              
+
+    private void saveBActionPerformed(java.awt.event.ActionEvent evt) {                                      
+        
+        
+        try {
+           
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost/employeelogin1","root","");
+        String query = "insert into KalvenID(Employee_Name,Register_Email,Gender,Work_Shift,Employee_post,Salary,Date)values(?,?,?,?,?,?,?);";
+        
+        PreparedStatement pst = con.prepareStatement(query);
+        
+        pst.setString(1, Employee_Name.getText());
+        pst.setString(2, Register_Email.getText());
+        
+        if(male.isSelected()){
+            gender="Male";
+        }
+        if(female.isSelected()){
+            gender="Female";
+        }
+        pst.setString(3, gender);
+        
+        String shift="";
+        if(Day_shift.isSelected()){
+        shift+=Day_shift.getText()+" ";
+        }
+        if(Night_shift.isSelected()){
+        shift+=Night_shift.getText()+" ";
+        }
+        pst.setString(4, shift);
+        
+        String post;
+        post = Employee_post.getSelectedItem().toString();
+        pst.setString(5, post);
+        
+        pst.setString(6, Salary.getText());
+        
+        pst.setDate(7, new java.sql.Date(System.currentTimeMillis()));
+       
+        pst.executeUpdate();
+        JOptionPane.showMessageDialog(null, "Inserted Sucessfully");  
+        
+    }                                     
+        
+       catch(Exception e){
+       JOptionPane.showMessageDialog(null, e);
+
+    }
+    }
+    private void SalaryActionPerformed(java.awt.event.ActionEvent evt) {                                       
+           // TODO add your handling code here:
+    }                                      
+
+    private void resetBtnActionPerformed(java.awt.event.ActionEvent evt) {                                         
+       Employee_Name.setText("");
+       Register_Email.setText("");
+       buttonGroup1.clearSelection();
+       buttonGroup2.clearSelection();
+       Employee_post.setSelectedIndex(0);
+       Salary.setText("");
+
+    }                                        
+
+    private void GetAccessActionPerformed(java.awt.event.ActionEvent evt) {                                          
+
+     String user = E_userName.getText();
+     String pa = E_password.getText(); 
+            
+        try {
+           
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/employeelogin1","root","");
+        Statement stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery("select * from admin_access");
+        
+        while(rs.next()){
+            String User_Name = rs.getString(1);
+            String Password = rs.getString(2);
+            
+            if(user.equals(User_Name) && pa.equals(Password)){
+               JOptionPane.showMessageDialog(null," permission granted");
+               Search.setEnabled(true);
+               Update.setEnabled(true);
+               
+            }
+            else{
+                JOptionPane.showMessageDialog(null,"permission denied");
+                dispose();
+            }  
+        }
+        }
+         catch(Exception e){
+       JOptionPane.showMessageDialog(null, e);
+
+    }
+    }                                         
+
+    private void RecordActionPerformed(java.awt.event.ActionEvent evt) {                                       
+        // TODO add your handling code here:
+        SalaryRecord sl = new SalaryRecord();
+        sl.setVisible(true);
+    }                                      
+
+    private void SearchActionPerformed(java.awt.event.ActionEvent evt) {                                       
+      try {
+           
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/employeelogin1","root","");
+        
+        String sql = "select * from KalvenID where sno =?";
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+        pstmt.setInt(1,Integer.parseInt(sno.getText()));
+        
+        ResultSet rs = pstmt.executeQuery();
+        if(rs.next())
+        {
+         String setid = rs.getString("sno");
+         sno.setText(setid);
+         
+         String setname = rs.getString("Employee_Name");
+         Employee_Name.setText(setname);
+         
+         String setadd = rs.getString("Register_Email");
+         Register_Email.setText(setadd);
+        //create a variable sex 
+         String sex = rs.getString("Gender");
+         if(sex.equals("Male")){
+         male.setSelected(true);
+         }
+         else{
+             female.setSelected(true);
+            }
+         String shift =rs.getString("Employee_post");
+         switch(shift){
+             case "Day_Shift ":
+                 Day_shift.setSelected(true);
+                 Night_shift.setSelected(false);
+                 break;
+             case "Night_shift ":  
+                 Night_shift.setSelected(true);
+                 Day_shift.setSelected(false);
+                 break;
+             default:
+                Day_shift.setSelected(true);
+                Night_shift.setSelected(false);
+                break;
+         }
+         String post1 = rs.getString("Employee_post");
+         switch(post1){
+             case "Select":
+                Employee_post.setSelectedIndex(0);
+                break; 
+             case "Project Head":
+                Employee_post.setSelectedIndex(1);
+                break; 
+             case "Manager":
+                Employee_post.setSelectedIndex(2);
+                break;  
+             case "Technician":
+                Employee_post.setSelectedIndex(3);
+                break;
+             case "genral Staff":
+                Employee_post.setSelectedIndex(4);
+                break; 
+             case "clerk":
+                Employee_post.setSelectedIndex(5);
+                break;     
+         }
+         
+         String salary1 = rs.getString("Salary");
+         Salary.setText(salary1);
+
+        }
+        
+      }
+      catch(Exception e){
+       JOptionPane.showMessageDialog(null, e);
+
+    }
+      
+    
+        
+    }                                      
+
+    private void snoActionPerformed(java.awt.event.ActionEvent evt) {                                    
+        // TODO add your handling code here:
+    }                                   
+
+    private void snoKeyPressed(java.awt.event.KeyEvent evt) {                               
+     
+    }                              
+
+    private void snoKeyReleased(java.awt.event.KeyEvent evt) {                                
+        
+        String PATTERN ="^[0-9]{0,2}$";
+        Pattern patt=Pattern.compile(PATTERN);
+        Matcher match=patt.matcher(sno.getText());
+        if(!match.matches()){
+            ID.setText("Invalide Employee ID!");
+        }
+        else{
+            ID.setText(null);
+        }
+    }                               
+
+    private void UpdateActionPerformed(java.awt.event.ActionEvent evt) {                                       
+     try {  
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/employeelogin1","root","");
+        
+        //Gives SQL Update command
+        String sql = "update KalvenID set Employee_Name=?, Register_Email=?, Gender=?, Work_Shift=?, Employee_post=?, Salary=? where sno=?";
+        
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+        pstmt.setString(1, Employee_Name.getText());
+        pstmt.setString(2, Register_Email.getText());
+        
+        if(male.isSelected()){
+            gender="Male";
+        }
+        if(female.isSelected()){
+            gender="Female";
+        }
+        pstmt.setString(3, gender);
+        
+         String shift="";
+        if(Day_shift.isSelected()){
+        shift+=Day_shift.getText()+" ";
+        }
+        if(Night_shift.isSelected()){
+        shift+=Night_shift.getText()+" ";
+        }
+        pstmt.setString(4, shift);
+        
+        String post;
+        post = Employee_post.getSelectedItem().toString();
+        pstmt.setString(5, post);
+        
+        pstmt.setString(6, Salary.getText());
+        
+        pstmt.setInt(7, Integer.parseInt(sno.getText()));
+        
+        
+        
+      
+       
+        pstmt.executeUpdate();
+        JOptionPane.showMessageDialog(null, "Record Updated Sucessfully");  
+        
+     }
+     
+      catch(Exception e){
+       JOptionPane.showMessageDialog(null, e);
+
+    }
+     
+    }                                      
+
+    private void E_userNameActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        // TODO add your handling code here:
+    }                                          
+
+    private void E_passwordActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        // TODO add your handling code here:
+    }                                          
+
+    private void Employee_NameKeyReleased(java.awt.event.KeyEvent evt) {                                          
+        String PATTERN ="[0-9]{0,30}";
+        Pattern patt=Pattern.compile(PATTERN);
+        Matcher match=patt.matcher(Employee_Name.getText());
+        if(match.matches()){
+            NAME.setText("Incorrect Name!");
+        }
+        else{
+            NAME.setText(null);
+        }
+                                   
+    }                                         
+
+    private void Register_EmailKeyReleased(java.awt.event.KeyEvent evt) {                                           
+        String PATTERN ="^[a-zA-Z0-9]{2,30}+[@][a-zA-Z0-9]{2,10}[.][a-zA-Z]{2,5}$";
+        Pattern patt=Pattern.compile(PATTERN);
+        Matcher match=patt.matcher(Register_Email.getText());
+        if(!match.matches()){
+            EMAIL.setText("Incorrect Email!");
+        }
+        else{
+            EMAIL.setText(null);
+        }
+    }                                          
+
+    private void EMAILKeyReleased(java.awt.event.KeyEvent evt) {                                  
+        // TODO add your handling code here:
+    }                                 
+
+    private void SalaryKeyReleased(java.awt.event.KeyEvent evt) {                                   
+     // TODO add your handling code here:
+        String PATTERN ="^[0-9]{0,5}$";
+        Pattern patt=Pattern.compile(PATTERN);
+        Matcher match=patt.matcher(Salary.getText());
+        if(!match.matches()){
+            SALARY.setText("please Enter the correct received Salary !");
+        }
+        else{
+            SALARY.setText(null);
+        }
+        
+    }                                  
+
+ 
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(KalvenID.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(KalvenID.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(KalvenID.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(KalvenID.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new KalvenID().setVisible(true);
+            }
+        });
+    }
+
+    // Variables declaration - do not modify                     
+    private javax.swing.JCheckBox Day_shift;
+    private javax.swing.JLabel EMAIL;
+    private javax.swing.JPasswordField E_password;
+    private javax.swing.JTextField E_userName;
+    private javax.swing.JTextField Employee_Name;
+    private javax.swing.JComboBox Employee_post;
+    private javax.swing.JButton GetAccess;
+    private javax.swing.JLabel ID;
+    private javax.swing.JLabel NAME;
+    private javax.swing.JCheckBox Night_shift;
+    private javax.swing.JButton Record;
+    private javax.swing.JTextField Register_Email;
+    private javax.swing.JLabel SALARY;
+    private javax.swing.JTextField Salary;
+    private javax.swing.JButton Search;
+    private javax.swing.JButton Update;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.JRadioButton female;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JRadioButton male;
+    private javax.swing.JButton resetBtn;
+    private javax.swing.JButton saveB;
+    private javax.swing.JTextField sno;
+    // End of variables declaration                   
+}
